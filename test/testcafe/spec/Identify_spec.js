@@ -1,7 +1,7 @@
 import { RequestMock, RequestLogger } from 'testcafe';
 import SelectFactorPageObject from '../framework/page-objects/SelectAuthenticatorPageObject';
 import IdentityPageObject from '../framework/page-objects/IdentityPageObject';
-import { checkConsoleMessages, renderWidget as rerenderWidget, getAuthJSVersion } from '../framework/shared';
+import { checkConsoleMessages, renderWidget as rerenderWidget } from '../framework/shared';
 import xhrIdentify from '../../../playground/mocks/data/idp/idx/identify';
 import xhrErrorIdentify from '../../../playground/mocks/data/idp/idx/error-identify-access-denied';
 import xhrAuthenticatorVerifySelect from '../../../playground/mocks/data/idp/idx/authenticator-verification-select-authenticator';
@@ -9,7 +9,7 @@ import xhrAuthenticatorOVTotp from '../../../playground/mocks/data/idp/idx/authe
 import xhrIdentifyWithUser from '../../../playground/mocks/data/idp/idx/identify-with-user';
 import xhrErrorIdentifyMultipleErrors from '../../../playground/mocks/data/idp/idx/error-identify-multiple-errors';
 
-import config from '../../../src/config/config.json';
+// import config from '../../../src/config/config.json';
 
 const baseIdentifyMock = RequestMock()
   .onRequestTo('http://localhost:3000/idp/idx/introspect')
