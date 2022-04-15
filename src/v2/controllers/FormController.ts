@@ -203,19 +203,20 @@ export default Controller.extend({
     let error;
     try {
       resp = await authClient.idx.proceed(invokeOptions);
-      // Handle errors for this action
-      if (resp.messages?.length > 0 && resp.messages[0].class === 'ERROR') {
+      if (resp.requestDidSucceed === false) {
         error = resp;
       }
     } catch (e) {
       error = e;
     }
 
+    // if request did not succeed, show error on the current form
     if (error) {
       this.showFormErrors(this.formView.model, error, this.formView.form);
       return;
     }
 
+    // process response, may render a new form
     this.handleIdxResponse(resp);
   },
 
