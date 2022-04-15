@@ -3,7 +3,7 @@
 # Can be used to run a canary build against a beta AuthJS version that has been published to artifactory.
 # This is available from the "downstream artifact" menu on any okta-auth-js build in Bacon.
 # DO NOT MERGE ANY CHANGES TO THIS LINE!!
-export AUTHJS_VERSION="6.4.3-gf234208"
+export AUTHJS_VERSION="6.4.3-g1ac5aef"
 
 # Install required node version
 export REGISTRY_REPO="npm-topic"
