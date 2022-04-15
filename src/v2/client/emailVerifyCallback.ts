@@ -10,9 +10,11 @@
  * See the License for the specific language governing permissions and limitations under the License.
  */
 
+import { ProceedOptions } from '@okta/okta-auth-js';
+
 export async function emailVerifyCallback(settings) {
   const authClient = settings.getAuthClient();
-  const idxOptions = {
+  const idxOptions: ProceedOptions = {
     exchangeCodeForTokens: false, // we handle this in interactionCodeFlow.js
     shouldProceedWithEmailAuthenticator: false, // do not auto-select email authenticator
   };

@@ -16,11 +16,10 @@ import { getV1ClassName } from '../ion/ViewClassNamesFactory';
 import { FORMS, TERMINAL_FORMS, FORM_NAME_TO_OPERATION_MAP } from '../ion/RemediationConstants';
 import Util from '../../util/Util';
 import sessionStorageHelper from '../client/sessionStorageHelper';
-import { HttpResponse, IdxStatus } from '@okta/okta-auth-js';
+import { HttpResponse, IdxStatus, IdxOptions, ProceedOptions } from '@okta/okta-auth-js';
 import { EventErrorContext } from 'types/events';
 import { CONFIGURED_FLOW } from '../client/constants';
 import Errors from 'util/Errors';
-
 export interface ContextData {
   controller: string;
   formName: string;
@@ -154,7 +153,7 @@ export default Controller.extend({
     const { appState, settings } = this.options;
     const idx = appState.get('idx');
     const { stateHandle } = idx.context;
-    let invokeOptions = {
+    let invokeOptions: ProceedOptions = {
       exchangeCodeForTokens: false, // we handle this in interactionCodeFlow.js
       shouldProceedWithEmailAuthenticator: false, // do not auto-select email authenticator
       stateHandle
@@ -256,7 +255,7 @@ export default Controller.extend({
 
     // Submit request to idx endpoint
     const authClient = this.options.settings.getAuthClient();
-    const idxOptions = {
+    const idxOptions: ProceedOptions = {
       exchangeCodeForTokens: false, // we handle this in interactionCodeFlow.js
       shouldProceedWithEmailAuthenticator: false, // do not auto-select email authenticator
     };

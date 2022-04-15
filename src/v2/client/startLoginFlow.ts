@@ -14,6 +14,7 @@ import Errors from 'util/Errors';
 import { emailVerifyCallback } from './emailVerifyCallback';
 import sessionStorageHelper from './sessionStorageHelper';
 import { CONFIGURED_FLOW } from './constants';
+import { IdxTransactionMeta, ProceedOptions } from '@okta/okta-auth-js';
 
 const handleProxyIdxResponse = async (settings) => {
   return Promise.resolve({
@@ -27,7 +28,7 @@ const handleProxyIdxResponse = async (settings) => {
 // eslint-disable-next-line complexity, max-statements
 export async function startLoginFlow(settings) {
   const authClient = settings.getAuthClient();
-  const idxOptions = {
+  const idxOptions: ProceedOptions = {
     exchangeCodeForTokens: false, // we handle this in interactionCodeFlow.js
     shouldProceedWithEmailAuthenticator: false, // do not auto-select email authenticator
   };
@@ -46,7 +47,7 @@ export async function startLoginFlow(settings) {
   }
 
   if (settings.get('useInteractionCodeFlow')) {
-    let meta = await authClient.idx.getSavedTransactionMeta();
+    const meta: IdxTransactionMeta = await authClient.idx.getSavedTransactionMeta();
     if (!meta) {
       // no saved transaction
       // if the configured flow is set to `proceed`, the SIW should only continue an existing idx transaction
