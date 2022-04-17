@@ -14,6 +14,7 @@ module.exports = {
   IdentifyUnknownUser: require('./IdentifyUnknownUser'),
   IdentifyWithRememberUsername: require('./IdentifyWithRememberUsername'),
   ReEnrollAuthenticatorPasswordView: require('./ReEnrollAuthenticatorPasswordView'),
+  ReEnrollAuthenticatorWarningPasswordView: require('./ReEnrollAuthenticatorWarningPasswordView'),
   ResetAuthenticatorPasswordView: require('./ResetAuthenticatorPasswordView'),
   SelectAuthenticatorForEnroll: require('./SelectAuthenticatorForEnroll'),
   WidgetCustomization: require('./WidgetCustomization'),
