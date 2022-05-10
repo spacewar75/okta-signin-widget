@@ -138,6 +138,16 @@ const onePassFooter = BaseFooter.extend({
           name: 'skip-setup',
           label: 'Maybe Later',
           clickHandler: () => {
+            CookieUtil.setOnePassEnrollmentHint('');
+            appState.trigger('invokeAction', RemediationForms.SKIP);
+          },
+      }})
+      this.add(Link, {
+        options: {
+          type: 'link',
+          name: 'skip-setup',
+          label: 'Do not ask me again',
+          clickHandler: () => {
             CookieUtil.setOnePassEnrollmentHint('declined');
             appState.trigger('invokeAction', RemediationForms.SKIP);
           },
