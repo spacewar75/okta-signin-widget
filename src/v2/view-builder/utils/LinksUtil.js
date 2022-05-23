@@ -96,7 +96,18 @@ const getSkipSetupLink = (appState, linkName) => {
 };
 
 const getSignOutLink = (settings, options = {}) => {
-  if (settings?.get('signOutLink')) {
+
+  // backToSignInLink: to override back to sign in link
+  if (settings?.get('backToSignInLink')) {
+    return [
+      {
+        'label': loc('goback', 'login'),
+        'name': 'cancel',
+        'href': settings.get('backToSignInLink')
+      },
+    ];
+  }
+  else if (settings?.get('signOutLink')) {
     return [
       {
         'label': loc('signout', 'login'),
@@ -120,8 +131,12 @@ const getSignOutLink = (settings, options = {}) => {
 const getBackToSignInLink = ({settings, appState}) => {
   const link = {};
 
+  // backToSignInLink: to override back to sign in link
+  if (settings?.get('backToSignInLink')) {
+    link.href = settings.get('backToSignInLink');
+  }
   // embedded scenarios
-  if (settings?.get('useInteractionCodeFlow')) {
+  else if (settings?.get('useInteractionCodeFlow')) {
     link.clickHandler = () => {
       appState.trigger('restartLoginFlow');
     };
